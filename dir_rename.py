@@ -37,7 +37,11 @@ def main():
 					#For each file in this directory...
 					for count, filename in enumerate(os.listdir(path)):
 						#Get the extension
-						ext = filename.split('.')[1]
+						splt = filename.split('.')
+						if len(splt) == 1:
+							ext = ''
+						else:
+							ext = splt[1]
 						
 						#Concatenate source file path
 						src = os.path.join(path, filename)
