@@ -20,16 +20,19 @@ def main():
 		if folder == '!exit':
 			break
 		elif folder == '':
-			print('Please input a directory name.')
+			print('\tError: Please input a directory name.')
 		elif folder == '!change':
 			newDir = input('Enter new CWD\n>')
-			os.chdir(newDir)
+			try:
+				os.chdir(newDir)
+			except FileNotFoundError:
+				print('\tError: Directory not found.')
 		else:
 			print('\nInput a new base name for each file in this directory.\nFor example, \'foo\' will yield foo1.jpg, foo2.png, foo3.exe, etc.')
 			name = input('>')
 			
 			if name == '':
-				print('Please input a file name.')
+				print('\tError: Please input a file name.')
 			elif name == '!exit':
 				break
 			else:			
