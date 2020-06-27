@@ -7,20 +7,23 @@ import os
 
 def main():
 	#Get current working directory (CWD)
-	path = os.getcwd()
 	folder = ''
 	
 	while folder != '!exit':
-		print('Input a directory to rename the files in it. The directory must be a subdirectory of the CWD.')
+		path = os.getcwd()
+		print('\nInput a directory to rename the files in it. The directory must be a subdirectory of the CWD.')
 		print('CWD = ' + path)
+		print('Type !change to change the current working directory.')
 		print('Type !exit to exit.')
 		folder = input('>')
 		
 		if folder == '!exit':
 			break
-		
-		if folder == '':
+		elif folder == '':
 			print('Please input a directory name.')
+		elif folder == '!change':
+			newDir = input('Enter new CWD\n>')
+			os.chdir(newDir)
 		else:
 			print('\nInput a new base name for each file in this directory.\nFor example, \'foo\' will yield foo1.jpg, foo2.png, foo3.exe, etc.')
 			name = input('>')
